@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>属性和状态实例演示</title>
+</head>
+<body>
+    <script src="../react/react.js"></script>
+    <script src="../react/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var Content = React.createClass({
+            getInitialState: function () {
+                return {
+                    inputText: "",
+                };
+            },
+            handleChange: function (event) {
+                // 改变文本域属性
+                this.setState({inputText: event.target.value});
+            },
+            handleSubmit: function () {
+                // 获取下拉框的取值和输入文本域的取值
+                alert("reply To: " + this.props.selectName + "\n" + this.state.inputText);
+            },
+            render: function () {
+                return <div>
+                <textarea onChange={this.handleChange} placeholder="please enter something..."></textarea>
+                <button onClick={this.handleSubmit}>submit</button>
+                </div>;
+            },
+        });
+        var Comment = React.createClass({
+            getInitialState: function () {
+                // 设置初始状态
+                return {
+                    names: ["Tim", "John", "Hank"],
+                    selectName: '',
+                };
+            },
+            handleSelect: function (event) {
+                // 下拉框发生改变的时候触发，修改selectName属性
+                this.setState({selectName: event.target.value});
+            },
+            render: function () {
+                // 构造dom结构,循环读取names的值，增加三个下拉框
+                var options = [];
+                for (var option in this.state.names) {
+                    // alert(option)
+                    options.push(<option value={this.state.names[option]}>{this.state.names[option]}</option>)
+                };
+                // console.log(options[0])
+                return <div>
+                <select onChange={this.handleSelect}>
+                    {options}
+                </select>
+                <Content selectName={this.state.selectName}></Content>
+                </div>;
+            },
+        });
+        React.render(<Comment></Comment>, document.body);
+    </script>
+</body>
+</html>

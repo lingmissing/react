@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>React中的事件</title>
+</head>
+<body>
+    <script src="../react/react.js"></script>
+    <script src="../react/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var HelloWorld = React.createClass({
+            //在初始状态将x和y设为0
+            getInitialState: function () {
+                return {
+                    x: 0,
+                    y: 0
+                }
+            },
+            //当鼠标发生移动时修改状态
+            handleMouseMove: function (event) {
+                // 重置xy的值
+                this.setState({
+                    x: event.clientX,
+                    y: event.clientY
+                });
+            },
+            //创建dom，添加对应的事件和状态
+            render: function () {
+                return <div onMouseMove={this.handleMouseMove} style={{
+                    height: '800px',
+                    width: '700px',
+                    backgroundColor: 'gray'
+                }}>
+                {this.state.x + ', ' + this.state.y}
+                </div>;
+            },
+        });
+        //将dom渲染到html中
+        React.render(<HelloWorld></HelloWorld>, document.body);
+    </script>
+</body>
+</html>

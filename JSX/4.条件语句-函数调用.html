@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello, World</title>
+</head>
+<body>
+    <script src="../react/react.js"></script>
+    <script src="../react/JSXTransformer.js"></script>
+    <script type="text/jsx">
+    	var HelloWorld = React.createClass({
+            //通过函数调用取值
+    		getName: function () {
+    			if (this.props.name)
+                    //this.props.name获取HelloWorld组件的name属性
+    				return this.props.name
+    			else
+    				return "World"
+    		},
+    		render: function () {
+                //调用HelloWorld的getName()方法获取取值
+    			return <p>Hello, {this.getName()}</p>
+    		}
+    	});
+        //不写name属性返回World
+    	React.render(<div><HelloWorld /*name="JSX"*/></HelloWorld></div>, document.body);
+    </script>
+</body>
+</html>
