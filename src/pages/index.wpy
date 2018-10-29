@@ -203,6 +203,9 @@
       background: url('https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/bg.jpg')
         no-repeat right top;
       background-size: 150px 100px;
+      padding-right: 150px;
+      box-sizing: border-box;
+
       .title {
         color: #b2553a;
         font-weight: bold;
