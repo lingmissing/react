@@ -3,11 +3,11 @@
   <view class="container">
     <view class="nav-header">
       <view class="title">廖八孃叶儿粑</view>
-      <view class="time">
+      <view class="row-list">
         <view class="label time-label">营业时间：</view>
         <view class="item">07:00-22:00</view>
       </view>
-      <view class="time">
+      <view class="row-list">
         <view class="label tel-label">预定电话：
           <view class="label-tip">(真空/快递)</view>
         </view>
@@ -17,12 +17,8 @@
           </repeat>
         </view>
       </view>
-      <image
-        @tap="toPic"
-        class="nav-image"
-        mode="aspectFit"
-        src="../assets/bg.jpg" />
     </view>
+
     <view class="address" @tap="toMap">犍为县学府街162号（人民保险公司下行100米）</view>
 
     <view class="desc">
@@ -33,16 +29,16 @@
       scroll-x
       class="image-list"
       scroll-with-animation>
-      <image mode="aspectFill" src="../assets/WechatIMG33.jpeg" />
-      <image mode="aspectFill" src="../assets/WechatIMG21.jpeg" />
-      <image mode="aspectFill" src="../assets/WechatIMG22.jpeg" />
+      <repeat for="{{homeBanners}}" key="index" index="index" item="item">
+        <image mode="aspectFill" src="{{item}}" @tap="view({{item}})" />
+      </repeat>
       <view class="look-image" @tap="toPic">查看更多</view>
     </scroll-view>
 
-    <view class="yeerba-price-title">价目表</view>
-    <view class="yeerba-price-list">
-      <repeat for="{{type}}" key="index" index="index" item="item">
-        <view class="yeerba-price">
+    <view class="yeb-price-title">价目表</view>
+    <view class="yeb-price-list">
+      <repeat for="{{priceList}}" key="index" index="index" item="item">
+        <view class="yeb-price">
           <image
             class="price-image"
             mode="aspectFill"
@@ -56,11 +52,17 @@
       </repeat>
     </view>
 
+    <view class="qr-content">
+      <view class="qr-title">联系我们</view>
+      <image class="qr-img" src="../assets/qr.jpeg" />
+    </view>
+
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
+  import config from './config'
 
   export default class Index extends wepy.page {
     config = {
@@ -69,43 +71,12 @@
 
     data = {
       tells: ['0833-4212815', '15351319929', '13309039712'],
-      type: [
-        {
-          image: '../assets/WechatIMG49.jpeg',
-          name: '富油洗沙芝麻核桃酥叶儿粑',
-          price: 2.5
-        },
-        {
-          image: '../assets/WechatIMG49.jpeg',
-          name: '鲜肉芽菜叶儿粑',
-          price: 2.5
-        },
-        {
-          image: '../assets/WechatIMG49.jpeg',
-          name: '甜皮咸心叶儿粑',
-          price: 2.5
-        },
-        {
-          image: '../assets/WechatIMG49.jpeg',
-          name: '花生芝麻白糖叶儿粑',
-          price: 2.5
-        },
-        {
-          image: '../assets/WechatIMG49.jpeg',
-          name: '小叶儿粑',
-          price: 1.5
-        },
-        {
-          image: '../assets/WechatIMG49.jpeg',
-          name: '富油泡粑',
-          price: 1
-        },
-        {
-          image: '../assets/WechatIMG49.jpeg',
-          name: '富油小泡粑',
-          price: 0.5
-        }
-      ]
+      homeBanners: [
+        'https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/WechatIMG33.jpeg',
+        'https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/WechatIMG21.jpeg',
+        'https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/WechatIMG22.jpeg'
+      ],
+      priceList: config.priceList
     }
 
     onLoad () {
@@ -128,6 +99,11 @@
       toPic () {
         wepy.navigateTo({ url: '/pages/picture' })
       },
+      view (image) {
+        wepy.previewImage({
+          urls: [image]
+        })
+      },
       toMap () {
         wepy.getLocation({
           type: 'gcj02',
@@ -148,65 +124,85 @@
 </script>
 
 <style lang="less">
-  .container {
-    padding: 0 12px;
-    color: #333333;
-    .label-tip {
+  .qr-content {
+    .qr-title {
+      text-align: center;
+      font-size: 16px;
+      color: #b2553a;
+      line-height: 30px;
+    }
+    .qr-img {
+      display: block;
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .image-list {
+    display: flex;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    .look-image {
+      display: inline-block;
+      vertical-align: top;
+      color: #ccc;
+      background: #f8f8f9;
+      border-radius: 6px;
+      height: 90px;
+      width: 80px;
+      text-align: center;
       font-size: 12px;
+      line-height: 90px;
     }
-    .image-list {
-      display: flex;
-      white-space: nowrap;
-      margin-bottom: 15px;
-      .look-image {
-        display: inline-block;
-        vertical-align: top;
-        color: #ccc;
-        background: #f8f8f9;
-        border-radius: 6px;
-        height: 90px;
-        width: 80px;
-        text-align: center;
-        font-size: 12px;
-        line-height: 90px;
-      }
-      image {
-        vertical-align: top;
-        border-radius: 6px;
-        display: inline-block;
-        width: 150px;
-        height: 90px;
-        margin-right: 10px;
-      }
+    image {
+      vertical-align: top;
+      border-radius: 6px;
+      display: inline-block;
+      width: 150px;
+      height: 90px;
+      margin-right: 10px;
     }
+  }
+
+  .row-list {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    line-height: 22px;
     .tel {
       color: blue;
     }
+    .label-tip {
+      font-size: 12px;
+    }
+    .label {
+      width: 70px;
+      background-repeat: no-repeat;
+      background-size: 12px;
+      background-position: left 5px;
+      padding-left: 15px;
+      &.time-label {
+        background-image: url('../assets/time.png');
+      }
+      &.tel-label {
+        background-image: url('../assets/tell.png');
+      }
+    }
+    .item {
+      flex: 1;
+    }
+  }
+
+  .container {
+    padding: 0 12px 12px;
+    color: #333333;
+
     .nav-header {
       width: 100%;
       position: relative;
-      .time {
-        display: flex;
-        flex-direction: row;
-        font-size: 14px;
-        line-height: 22px;
-        .label {
-          width: 70px;
-          background-repeat: no-repeat;
-          background-size: 12px;
-          background-position: left 5px;
-          padding-left: 15px;
-          &.time-label {
-            background-image: url('../assets/time.png');
-          }
-          &.tel-label {
-            background-image: url('../assets/tell.png');
-          }
-        }
-        .item {
-          flex: 1;
-        }
-      }
+      background: url('https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/bg.jpg')
+        no-repeat right top;
+      background-size: 150px 100px;
       .title {
         color: #b2553a;
         font-weight: bold;
@@ -214,20 +210,12 @@
         line-height: 30px;
       }
     }
-    .nav-image {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 150px;
-      height: 100px;
-    }
     .address {
-      background: url('../assets/map.png') no-repeat left 5px;
-      background-size: 18px;
+      background: url('../assets/map.png') no-repeat left center;
+      background-size: 14px;
       font-size: 14px;
       line-height: 30px;
-      padding-left: 24px;
+      padding-left: 20px;
       margin-bottom: 10px;
     }
     .desc {
@@ -238,28 +226,29 @@
         margin-right: 20px;
       }
     }
-    .yeerba-price-title {
+    .yeb-price-title {
       color: #b2553a;
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 10px;
     }
-    .yeerba-price {
-      font-size: 14px;
-      margin-bottom: 10px;
-      display: flex;
-      flex-direction: row;
-      .price-image {
-        width: 40px;
-        height: 40px;
+  }
+
+  .yeb-price {
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    .price-image {
+      width: 40px;
+      height: 40px;
+    }
+    .price-desc {
+      padding-left: 10px;
+      .price-desc-title {
+        font-weight: bold;
       }
-      .price-desc {
-        padding-left: 10px;
-        .price-desc-title {
-          font-weight: bold;
-        }
-        .price-desc-detail {
-        }
+      .price-desc-detail {
       }
     }
   }

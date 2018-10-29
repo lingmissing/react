@@ -13,32 +13,21 @@
 
 <script>
   import wepy from 'wepy'
+  import config from './config'
+
   export default class Picture extends wepy.page {
     config = {
       navigationBarTitleText: '图片详情'
     }
     data = {
-      imageList: [
-        '../assets/WechatIMG30.jpeg',
-        '../assets/WechatIMG17.jpeg',
-        '../assets/WechatIMG12.jpg',
-        '../assets/WechatIMG13.jpeg',
-        '../assets/WechatIMG15.jpeg',
-        '../assets/WechatIMG18.jpeg',
-        '../assets/WechatIMG19.jpeg',
-        '../assets/WechatIMG21.jpeg',
-        '../assets/WechatIMG22.jpeg',
-        '../assets/WechatIMG23.jpeg',
-        '../assets/WechatIMG29.jpeg',
-        '../assets/WechatIMG32.jpeg'
-      ]
+      imageList: config.imageList
     }
 
     methods = {
-      viewImage (image) {
-        console.log(image)
+      viewImage (current) {
         wepy.previewImage({
-          urls: [image]
+          current,
+          urls: this.imageList
         })
       }
     }
