@@ -1,0 +1,57 @@
+<template>
+  <view class='container'>
+    <repeat for="{{imageList}}" key="index" index="index" item="item">
+      <image
+        class="picture"
+        src="{{item}}"
+        mode="widthFix"
+        @tap="viewImage({{item}})"
+        lazy-load="true" />
+    </repeat>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Picture extends wepy.page {
+    config = {
+      navigationBarTitleText: '图片详情'
+    }
+    data = {
+      imageList: [
+        '../assets/WechatIMG30.jpeg',
+        '../assets/WechatIMG17.jpeg',
+        '../assets/WechatIMG12.jpg',
+        '../assets/WechatIMG13.jpeg',
+        '../assets/WechatIMG15.jpeg',
+        '../assets/WechatIMG18.jpeg',
+        '../assets/WechatIMG19.jpeg',
+        '../assets/WechatIMG21.jpeg',
+        '../assets/WechatIMG22.jpeg',
+        '../assets/WechatIMG23.jpeg',
+        '../assets/WechatIMG29.jpeg',
+        '../assets/WechatIMG32.jpeg'
+      ]
+    }
+
+    methods = {
+      viewImage (image) {
+        console.log(image)
+        wepy.previewImage({
+          urls: [image]
+        })
+      }
+    }
+  }
+</script>
+
+<style lang='less' scoped>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .picture {
+    display: block;
+    width: 33.3%;
+  }
+</style>
