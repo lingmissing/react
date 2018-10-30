@@ -19,8 +19,11 @@
     config = {
       navigationBarTitleText: '图片详情'
     }
-    data = {
-      imageList: config.imageList
+    computed = {
+      imageList () {
+        const imageList = Object.keys(Array.from({ length: 27 }))
+        return imageList.map(item => `${baseURL}yeb${item + 1}`)
+      }
     }
 
     methods = {
@@ -41,6 +44,7 @@
   }
   .picture {
     display: block;
-    width: 33.3%;
+    width: 100px;
+    height: 100px;
   }
 </style>

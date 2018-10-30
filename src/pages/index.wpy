@@ -54,7 +54,7 @@
 
     <view class="qr-content">
       <view class="qr-title">联系我们</view>
-      <image class="qr-img" src="../assets/qr.jpeg" />
+      <image class="qr-img" src="https://raw.githubusercontent.com/lingmissing/yeb/master/assets/qr.jpeg" />
     </view>
 
   </view>
@@ -70,13 +70,19 @@
     }
 
     data = {
-      tells: ['0833-4212815', '15351319929', '13309039712'],
-      homeBanners: [
-        'https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/WechatIMG33.jpeg',
-        'https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/WechatIMG21.jpeg',
-        'https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/WechatIMG22.jpeg'
-      ],
-      priceList: config.priceList
+      tells: ['0833-4212815', '15351319929', '13309039712']
+    }
+
+    computed = {
+      homeBanners () {
+        const { baseURL } = this.$parent.globalData
+        const banners = ['yeb1', 'yeb2', 'yeb3']
+        return banners.map(item => `${baseURL}${item}`)
+      },
+      priceList () {
+        const { baseURL } = this.$parent.globalData
+        return config.priceList.map(item => ({ ...item, image: `${baseURL}${item.image}` }))
+      }
     }
 
     onLoad () {
@@ -86,7 +92,7 @@
     onShareAppMessage () {
       return {
         title: '廖八孃叶儿粑',
-        imageUrl: '../assets/WechatIMG49.jpeg'
+        imageUrl: 'https://raw.githubusercontent.com/lingmissing/yeb/master/assets/WechatIMG49.jpeg'
       }
     }
 
@@ -182,10 +188,10 @@
       background-position: left 5px;
       padding-left: 15px;
       &.time-label {
-        background-image: url('../assets/time.png');
+        background-image: url('https://raw.githubusercontent.com/lingmissing/yeb/master/assets/time.png');
       }
       &.tel-label {
-        background-image: url('../assets/tell.png');
+        background-image: url('https://raw.githubusercontent.com/lingmissing/yeb/master/assets/tell.png');
       }
     }
     .item {
@@ -214,7 +220,8 @@
       }
     }
     .address {
-      background: url('../assets/map.png') no-repeat left center;
+      background: url('https://raw.githubusercontent.com/lingmissing/yeb/master/assets/map.png')
+        no-repeat left center;
       background-size: 14px;
       font-size: 14px;
       line-height: 30px;

@@ -24,6 +24,7 @@
     }
 
     globalData = {
+      baseURL: 'https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/',
       userInfo: null
     }
 
