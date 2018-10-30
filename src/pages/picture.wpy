@@ -4,7 +4,7 @@
       <image
         class="picture"
         src="{{item}}"
-        mode="widthFix"
+        mode="aspectFill"
         @tap="viewImage({{item}})"
         lazy-load="true" />
     </repeat>
@@ -13,7 +13,6 @@
 
 <script>
   import wepy from 'wepy'
-  import config from './config'
 
   export default class Picture extends wepy.page {
     config = {
@@ -21,8 +20,9 @@
     }
     computed = {
       imageList () {
+        const { baseURL } = this.$parent.globalData
         const imageList = Object.keys(Array.from({ length: 27 }))
-        return imageList.map(item => `${baseURL}yeb${item + 1}`)
+        return imageList.map(item => `${baseURL}yeb${+item + 1}.jpeg`)
       }
     }
 

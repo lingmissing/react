@@ -16,17 +16,17 @@ export default {
       price: 2.5
     },
     {
-      image: 'yeb25.jpeg',
+      image: 'yeb25.jpg',
       name: '花生芝麻白糖叶儿粑',
       price: 2.5
     },
     {
-      image: 'yeb27.jpeg',
+      image: 'yeb25.jpg',
       name: '小叶儿粑',
       price: 1.5
     },
     {
-      image: 'yeb25.jpeg',
+      image: 'yeb27.jpeg',
       name: '富油泡粑',
       price: 1
     },

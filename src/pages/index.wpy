@@ -19,7 +19,7 @@
       </view>
     </view>
 
-    <view class="address" @tap="toMap">犍为县学府街162号（人民保险公司下行100米）</view>
+    <view class="address" @tap="toMap">犍为县学府街161号（人民保险公司下行100米）</view>
 
     <view class="desc">
       叶儿粑是犍为县的特产，用糯米粉面包馅心，外裹新鲜绿色粑叶，置旺火蒸制。其色洁似乳，味道香醇可口，不沾盘、不沾筷、不沾牙，被称作三不沾叶儿粑。制作叶儿粑选料考究，工艺精细，工序达到了六步以上，原料配方多达十多种。叶儿粑分甜的和咸的两种，甜的馅是豆沙加上核桃等果仁，大多在表面加了红糖，这样更好吃；咸的则是肉末或者腊肉粒加芽菜。
@@ -43,6 +43,7 @@
             class="price-image"
             mode="aspectFill"
             src="{{item.image}}"
+            @tap="view({{item.image}})"
             lazy-load="false" />
           <view class="price-desc">
             <view class="price-desc-title">{{item.name}}</view>
@@ -76,7 +77,7 @@
     computed = {
       homeBanners () {
         const { baseURL } = this.$parent.globalData
-        const banners = ['yeb1', 'yeb2', 'yeb3']
+        const banners = ['yeb16.jpeg', 'yeb1.jpg', 'yeb17.jpeg']
         return banners.map(item => `${baseURL}${item}`)
       },
       priceList () {
@@ -118,8 +119,8 @@
             wepy.openLocation({
               latitude: latitude,
               longitude: longitude,
-              name: '四川省乐山市犍为县学府街162号',
-              address: '四川省乐山市犍为县学府街162号',
+              name: '四川省乐山市犍为县学府街161号',
+              address: '四川省乐山市犍为县学府街161号',
               scale: 28
             })
           }
@@ -206,7 +207,7 @@
     .nav-header {
       width: 100%;
       position: relative;
-      background: url('https://raw.githubusercontent.com/lingmissing/yeb/master/src/assets/bg.jpg')
+      background: url('https://raw.githubusercontent.com/lingmissing/yeb/master/assets/yeb1.jpg')
         no-repeat right top;
       background-size: 150px 100px;
       padding-right: 150px;
