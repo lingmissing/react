@@ -17,6 +17,7 @@
           </repeat>
         </view>
       </view>
+      <view class="tag" @tap="toPic">26张</view>
     </view>
 
     <view class="address" @tap="toMap">犍为县学府街161号（人民保险公司下行100米）</view>
@@ -95,7 +96,7 @@
       const { baseURL } = this.$parent.globalData
       return {
         title: '欢迎新老顾客前来选购！',
-        imageUrl: `${baseURL}yeb22.jpg`
+        imageUrl: `https://raw.githubusercontent.com/lingmissing/yeb/master/assets/yeb22.jpg`
       }
     }
 
@@ -214,6 +215,16 @@
       background-size: 150px 100px;
       padding-right: 150px;
       box-sizing: border-box;
+      .tag {
+        position: absolute;
+        right: 5px;
+        top: 75px;
+        color: #333;
+        background: rgba(255, 255, 255, 0.5);
+        font-size: 12px;
+        border-radius: 10px;
+        padding: 0 10px;
+      }
 
       .title {
         color: #b2553a;
