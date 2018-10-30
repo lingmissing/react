@@ -21,8 +21,8 @@
     computed = {
       imageList () {
         const { baseURL } = this.$parent.globalData
-        const imageList = Object.keys(Array.from({ length: 27 }))
-        return imageList.map(item => `${baseURL}yeb${+item + 1}.jpeg`)
+        const imageList = Object.keys(Array.from({ length: 26 }))
+        return imageList.map(item => `${baseURL}yeb${+item + 1}.jpg`)
       }
     }
 

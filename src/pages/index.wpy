@@ -77,7 +77,7 @@
     computed = {
       homeBanners () {
         const { baseURL } = this.$parent.globalData
-        const banners = ['yeb16.jpeg', 'yeb1.jpg', 'yeb17.jpeg']
+        const banners = ['yeb16.jpg', 'yeb1.jpg', 'yeb17.jpg']
         return banners.map(item => `${baseURL}${item}`)
       },
       priceList () {
@@ -91,9 +91,10 @@
     }
 
     onShareAppMessage () {
+      const { baseURL } = this.$parent.globalData
       return {
         title: '廖八孃叶儿粑',
-        imageUrl: 'https://raw.githubusercontent.com/lingmissing/yeb/master/assets/WechatIMG49.jpeg'
+        imageUrl: `${baseURL}yeb22.jpg`
       }
     }
 
