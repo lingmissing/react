@@ -96,7 +96,7 @@
       const { baseURL } = this.$parent.globalData
       return {
         title: '欢迎新老顾客前来选购！',
-        imageUrl: `https://raw.githubusercontent.com/lingmissing/yeb/master/assets/yeb22.jpg`
+        imageUrl: `${baseURL}yeb22.jpg`
       }
     }
 
