@@ -29,6 +29,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.3",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^3.18.0",
     "eslint-config-standard": "^7.1.0",
     "eslint-friendly-formatter": "^2.0.7",
@@ -42,5 +43,10 @@
     "wepy-plugin-imagemin": "^1.5.3",
     "wepy-plugin-px2units": "^1.1.0",
     "wepy-plugin-uglifyjs": "^1.3.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
