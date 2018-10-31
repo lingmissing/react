@@ -72,11 +72,14 @@
     }
 
     data = {
-      qr: 'https://raw.githubusercontent.com/lingmissing/yeb/master/assets/qr.jpeg',
       tells: ['0833-4212815', '15351319929', '13309039712']
     }
 
     computed = {
+      qr () {
+        const { baseURL } = this.$parent.globalData
+        return `${baseURL}qr.jpg`
+      },
       homeBanners () {
         const { baseURL } = this.$parent.globalData
         const banners = ['yeb16.jpg', 'yeb1.jpg', 'yeb17.jpg']
@@ -192,10 +195,10 @@
       background-position: left 5px;
       padding-left: 15px;
       &.time-label {
-        background-image: url('https://raw.githubusercontent.com/lingmissing/yeb/master/assets/time.png');
+        background-image: url('../assets/time.png');
       }
       &.tel-label {
-        background-image: url('https://raw.githubusercontent.com/lingmissing/yeb/master/assets/tell.png');
+        background-image: url('../assets/tell.png');
       }
     }
     .item {
@@ -204,13 +207,13 @@
   }
 
   .container {
-    padding: 0 12px 12px;
+    padding: 12px 12px;
     color: #333333;
 
     .nav-header {
       width: 100%;
       position: relative;
-      background: url('https://raw.githubusercontent.com/lingmissing/yeb/master/assets/yeb1.jpg')
+      background: url('http://laoyuegou-img.oss-cn-hangzhou.aliyuncs.com/copy/test/yeb1.jpg')
         no-repeat right top;
       background-size: 150px 100px;
       padding-right: 150px;
@@ -234,8 +237,7 @@
       }
     }
     .address {
-      background: url('https://raw.githubusercontent.com/lingmissing/yeb/master/assets/map.png')
-        no-repeat left center;
+      background: url('../assets/map.png') no-repeat left center;
       background-size: 14px;
       font-size: 14px;
       line-height: 30px;
